@@ -17,7 +17,8 @@ const createOrder = (req, res) => {
   const {
     user_id,
     client_name,
-    table, status,
+    table,
+    status,
     processedAt,
   } = req.body;
 
@@ -48,9 +49,9 @@ const createOrder = (req, res) => {
         return res.status(200).json(result);
       });
     })
-    .catch(() => res.status(400).json({
-      message: 'Error creating order',
-    }));
+    .catch((error) => res.status(400).json(
+      error,
+    ));
 };
 
 const getOrderId = (req, res) => {
